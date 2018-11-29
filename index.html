@@ -1,0 +1,49 @@
+<!-- Licence VinhPN master-->
+
+<!DOCTYPE html>
+<html lang="en-US">
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<script src="./libs/diff.js"></script>
+<script src="./libs/lodash.js"></script>
+<script src="./controller/diff.controller.js"></script>
+<script src="./services/readfile.service.js"></script>
+<script src="./build/docxtemplater-latest.js"></script>
+<script src="./vendor/jszip.js"></script>
+<script src="./vendor/file-saver.min.js"></script>
+<script src="./vendor/jszip-utils.js"></script>
+<head>
+	<meta charset="utf-8">
+	<title>Diff Document</title>
+	<link rel="stylesheet" href="./css/style.css"/>
+</head>
+<body>
+<div ng-app="myApp" ng-controller="myCtrl">
+<div id="settings">
+	<h1>Diff Type</h1>
+	<label><input type="radio" name="diff_type" value="diffChars" checked> Chars</label>
+	<label><input type="radio" name="diff_type" value="diffWords"> Words</label>
+	<label><input type="radio" name="diff_type" value="diffLines"> Lines</label>
+	<label><input type="radio" name="diff_type" value="diffTrimmedLines"> Trimmed Lines</label>
+	<label><input type="radio" name="diff_type" value="createPatch"> Patch</label>
+	<label><input type="radio" name="diff_type" value="applyPatch"> Merge</label>
+</div>
+<div style="margin-top: 20px; margin-left: 5px;" class="input-file-container">
+<input type="file" id="file" name="file" multiple onchange="angular.element(this).scope().fileNameChanged(this.files)" />
+</div>
+<div style="margin-top: 10px;">
+<table>
+	<tr>
+		<td>{{dateFileOne}}</td>
+		<td>{{dateFileTwo}}</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td contenteditable="true" id="a">Phạm Ngọc Vinh</td>
+		<td contenteditable="true" id="b">Hard work beats talent, when talent doesn't work hard</td>
+		<td id="result"></td>
+	</tr>
+</table>
+</div>
+</div>
+</body>
+</html>
